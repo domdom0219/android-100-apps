@@ -1,0 +1,19 @@
+name: Environments
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment-name:
+        type: environment
+        default: Develop
+        required: false
+        description: Environment name
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment-name }}
+    env:
+      USERNAME: ${{ vars.USERNAME }}
+    steps:
+      - run: echo "${{ USERNAME }}"

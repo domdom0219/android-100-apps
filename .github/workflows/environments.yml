@@ -6,7 +6,7 @@ on:
       environment-name:
         type: environment
         default: Develop
-        required: false
+        required: true
         description: Environment name
 
 jobs:
@@ -16,4 +16,4 @@ jobs:
     env:
       USERNAME: ${{ vars.USERNAME }}
     steps:
-      - run: echo "${{ USERNAME }}"
+      - run: echo "${USERNAME}"

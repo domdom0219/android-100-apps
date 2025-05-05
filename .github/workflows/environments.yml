@@ -18,3 +18,7 @@ jobs:
     steps:
       - run: echo "UserName - '${USERNAME}'"
       - run: echo "Environment - '${{ inputs.environment-name }}'"
+      - run: echo "Develop step"
+        if: ${{ inputs.environment-name }} == Develop
+      - run: echo "Production step"
+        if: ${{ inputs.environment-name }} == Production

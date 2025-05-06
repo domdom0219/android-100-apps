@@ -3,7 +3,7 @@ name: Environments
 on:
   workflow_dispatch:
     inputs:
-      environment-name:
+      environment:
         type: environment
         default: Develop
         required: true
@@ -12,15 +12,15 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment-name }}
+    environment: ${{ inputs.environment }}
     env:
       USERNAME: ${{ vars.USERNAME }}
     steps:
       - run: echo "UserName - ${USERNAME}"
-      - run: echo "Environment - ${{ inputs.environment-name }}"
+      - run: echo "Environment - ${{ inputs.environment }}"
       - name: Develop
-        if: ${{ inputs.environment-name == 'Develop' }}
+        if: ${{ inputs.environment == 'Develop' }}
         run: echo "Develop step"
       - name: Production
-        if: ${{ inputs.environment-name == 'Production' }}
+        if: ${{ inputs.environment == 'Production' }}
         run: echo "Production step"

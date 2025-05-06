@@ -16,11 +16,11 @@ jobs:
     env:
       USERNAME: ${{ vars.USERNAME }}
     steps:
-      - run: echo "UserName - '${USERNAME}'"
+      - run: echo "UserName - ${USERNAME}"
       - run: echo "Environment - ${{ inputs.environment-name }}"
       - name: Develop
-        if: ${{ inputs.environment-name == Develop }}
+        if: ${{ inputs.environment-name == 'Develop' }}
         run: echo "Develop step"
       - name: Production
-        if: ${{ inputs.environment-name == Production }}
+        if: ${{ inputs.environment-name == 'Production' }}
         run: echo "Production step"

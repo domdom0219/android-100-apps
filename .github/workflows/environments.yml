@@ -25,4 +25,6 @@ jobs:
         if: ${{ inputs.environment == 'Production' }}
         run: echo "Production step"
       - name: Command
-        run: ./gradlew assemble'${{ inputs.environment }}'Release
+        run: ./gradlew assemble${{ env.ENV_NAME }}Release
+        env:
+          ENV_NAME: ${{ inputs.environment }}

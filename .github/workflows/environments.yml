@@ -25,6 +25,4 @@ jobs:
         if: ${{ inputs.environment == 'Production' }}
         run: echo "Production step"
       - name: Command
-        run: echo "app/build/outputs/apk/${{ env.FILE_PATH }}/release/"
-        env:
-          FILE_PATH: ${{ (github.environment == Develop && 'develop') || (github.environment == Production && 'production') }}
+        run: echo "gradlew assemble${{ github.environment }}Release"
